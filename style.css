@@ -1,0 +1,301 @@
+:root {
+    /* --- ธีม Midnight Lab (Dark Mode) --- */
+    --bg-color: #0f172a;        /* พื้นหลังหลัก: น้ำเงินเข้มมาก */
+    --paper-bg: #1e293b;        /* สีพื้นการ์ด: น้ำเงินเทา */
+    --text-primary: #f1f5f9;    /* สีตัวหนังสือหลัก: ขาวหม่น */
+    --text-secondary: #94a3b8;  /* สีตัวหนังสือรอง: เทาฟ้า */
+    --accent-color: #38bdf8;    /* สีเน้น: ฟ้าสดใส (Sky Blue) */
+    --border-line: #334155;     /* สีเส้นขอบ */
+    --code-bg: #020617;         /* พื้นหลังส่วนที่เป็น Code */
+    
+    --font-main: 'Inter', 'Sarabun', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    padding: 40px 20px;
+    /* เพิ่มลายเส้นตารางจางๆ ให้ดูเป็น Tech */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* Container เหมือนแผ่นงานบนโต๊ะแล็บ */
+.page-container {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--paper-bg);
+    padding: 50px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-line);
+    border-radius: 12px;
+}
+
+/* --- Header --- */
+.cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 5px;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+/* Tag อาชีพแบบ Code Style */
+.role-tag {
+    font-family: var(--font-mono);
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    background: rgba(56, 189, 248, 0.1);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+/* Grid ข้อมูลติดต่อ */
+.contact-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 20px;
+    font-size: 0.95rem;
+}
+
+.contact-item {
+    display: contents;
+}
+
+.label {
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* รูปโปรไฟล์ */
+.photo-frame {
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--accent-color);
+    padding: 4px;
+    border-radius: 12px;
+    background: var(--bg-color);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.divider {
+    border: none;
+    border-bottom: 1px dashed var(--border-line);
+    margin: 30px 0;
+}
+
+/* --- Layout 2 Columns --- */
+.main-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr;
+    gap: 50px;
+}
+
+/* --- Section Styling --- */
+.section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border-line);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Education Items */
+.timeline-item {
+    margin-bottom: 25px;
+    border-left: 2px solid var(--border-line);
+    padding-left: 15px;
+}
+
+.time-badge {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    background: var(--border-line);
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.institution {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.degree {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.coursework {
+    margin-top: 8px;
+    padding-left: 15px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Tags (Skills) */
+.skill-group {
+    margin-bottom: 20px;
+}
+.skill-group h3 {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.tag {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    background: var(--code-bg);
+    color: var(--accent-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-line);
+    transition: all 0.2s;
+}
+
+.tag:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Projects Card */
+.project-card {
+    background: #162032;
+    border: 1px solid var(--border-line);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.project-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.project-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+/* แก้ไขจุดที่ทำให้ตัวหนังสือห่างเกินไปเรียบร้อยแล้ว */
+.project-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    text-align: left; /* บังคับชิดซ้าย ไม่ฉีกคำ */
+    line-height: 1.6;
+}
+
+.tech-used {
+    display: flex;
+    gap: 10px;
+}
+
+.tech-used span {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+/* Personal Info List */
+.personal-list {
+    list-style: none;
+}
+.personal-list li {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-line);
+    padding-bottom: 8px;
+    color: var(--text-secondary);
+}
+.personal-list strong {
+    color: var(--text-primary);
+}
+
+/* Footer */
+.cv-footer {
+    text-align: center;
+    margin-top: 50px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--border-line);
+}
+
+/* Responsive มือถือ */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 20px;
+    }
+    .cv-header {
+        flex-direction: column-reverse;
+        text-align: center;
+        align-items: center;
+    }
+    .header-left { width: 100%; }
+    .contact-grid {
+        justify-content: center;
+    }
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .photo-frame {
+        margin-bottom: 20px;
+    }
+}
