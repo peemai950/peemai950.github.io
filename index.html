@@ -3,161 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae - Kaisak Namwises</title>
+    <title>ไกรศักดิ์ นามวิเศษ - CS Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500&family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="page-container">
+    <canvas id="matrixCanvas"></canvas>
+
+    <div class="main-container">
         
-        <header class="cv-header">
-            <div class="header-left">
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="profile-img-box">
+                    <img src="kaisak.jpg" alt="Kaisak Profile" class="profile-img">
+                    <div class="status-badge"><i class="fas fa-circle"></i> กำลังเขียนโค้ด</div>
+                </div>
                 <h1 class="name">นายไกรศักดิ์ นามวิเศษ</h1>
-                <p class="role-tag">&lt;Computer Science Student /&gt;</p>
-                
-                <div class="contact-grid">
-                    <div class="contact-item">
-                        <span class="label">Student ID:</span> 
-                        <span class="value">68040249103</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="label">University:</span> 
-                        <span class="value">Udon Thani Rajabhat University</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="label">Major:</span> 
-                        <span class="value">Computer Science (CS)</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="label">Email:</span> 
-                        <span class="value">kaisak.n@example.com</span>
-                    </div>
+                <p class="student-id">รหัสนักศึกษา: 68040249103</p>
+                <div class="role-typing">
+                    <span id="typing-text"></span><span class="cursor">|</span>
                 </div>
             </div>
-            
-            <div class="header-right">
-                <div class="photo-frame">
-                    <img src="kaisak.jpg" alt="Profile Picture" class="profile-img">
-                </div>
+
+            <nav class="nav-menu">
+                <a href="#about" class="nav-link active"><i class="fas fa-user"></i> เกี่ยวกับผม</a>
+                <a href="#skills" class="nav-link"><i class="fas fa-code"></i> ทักษะความสามารถ</a>
+                <a href="#projects" class="nav-link"><i class="fas fa-laptop-code"></i> ผลงานเด่น</a>
+                <a href="#contact" class="nav-link"><i class="fas fa-address-book"></i> ช่องทางติดต่อ</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>© 2026 CS Udon Thani</p>
             </div>
-        </header>
+        </aside>
 
-        <hr class="divider">
-
-        <div class="main-content">
+        <main class="content-area">
             
-            <div class="left-col">
+            <section id="about" class="content-section fade-in">
+                <h2 class="section-title">เกี่ยวกับผม <span class="dot">.</span></h2>
+                <div class="glass-card bio-card">
+                    <p class="highlight-text">
+                        "สวัสดีครับ ผมชื่อเล่น <strong>ปีใหม่</strong> กำลังศึกษาอยู่ชั้นปีที่ 1 สาขาวิทยาการคอมพิวเตอร์ (CS) มหาวิทยาลัยราชภัฏอุดรธานี"
+                    </p>
+                    <p class="details-text">
+                        ผมมีความหลงใหลในการพัฒนาระบบ Back-end และ Game Development โดยเริ่มต้นจากการทำเซิร์ฟเวอร์ Minecraft เขียนสคริปต์ควบคุมระบบเกม จนขยายความสนใจมาสู่การเขียนเว็บ (Web Development) และเทคโนโลยี AI ในปัจจุบันผมกำลังศึกษาเรื่อง <strong>Digital Logic Design</strong> และการรัน <strong>Local LLM</strong> เพื่อช่วยในการเขียนโค้ด
+                    </p>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="label">วันเกิด:</span> 27 ธันวาคม 2549 (อายุ 19 ปี)
+                        </div>
+                        <div class="info-item">
+                            <span class="label">ภูมิลำเนา:</span> อุดรธานี, ประเทศไทย
+                        </div>
+                        <div class="info-item">
+                            <span class="label">การศึกษา:</span> จบจากโรงเรียนน้ำโสมพิทยาคม
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" class="content-section">
+                <h2 class="section-title">ทักษะ & เครื่องมือ <span class="dot">.</span></h2>
                 
-                <section class="section">
-                    <h2 class="section-title">01 // EDUCATION HISTORY</h2>
-                    
-                    <div class="timeline-item">
-                        <div class="time-badge">2026 - Present</div>
-                        <h3 class="institution">มหาวิทยาลัยราชภัฏอุดรธานี</h3>
-                        <p class="degree">วิทยาศาสตรบัณฑิต (วท.บ.) วิทยาการคอมพิวเตอร์</p>
-                        <ul class="coursework">
-                            <li>Digital Logic & Circuit Design</li>
-                            <li>Operating Systems (Process/Thread)</li>
-                            <li>Algorithm & Data Structure</li>
+                <div class="skills-wrapper">
+                    <div class="glass-card skill-box">
+                        <h3><i class="fas fa-code"></i> Programming</h3>
+                        <div class="skill-tags">
+                            <span class="tag java"><i class="fab fa-java"></i> Java</span>
+                            <span class="tag python"><i class="fab fa-python"></i> Python</span>
+                            <span class="tag skript"><i class="fas fa-cube"></i> Skript (MC)</span>
+                            <span class="tag lua"><i class="fas fa-gamepad"></i> Lua (Roblox)</span>
+                            <span class="tag html"><i class="fab fa-html5"></i> HTML/CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card skill-box">
+                        <h3><i class="fas fa-tools"></i> Tools & Dev</h3>
+                        <div class="skill-tags">
+                            <span class="tag"><i class="fab fa-git-alt"></i> Git/GitHub</span>
+                            <span class="tag"><i class="fas fa-code-branch"></i> VS Code</span>
+                            <span class="tag"><i class="fas fa-database"></i> Firebase</span>
+                            <span class="tag"><i class="fas fa-cube"></i> Blockbench 3D</span>
+                            <span class="tag"><i class="fas fa-microchip"></i> Logisim</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="content-section">
+                <h2 class="section-title">ผลงานที่ผ่านมา <span class="dot">.</span></h2>
+                
+                <div class="project-card-large">
+                    <div class="project-icon mc">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <div class="project-details">
+                        <h3>พัฒนาระบบ Minecraft Server</h3>
+                        <p class="tech-stack">Skript • Java • SQL • Discord Integration</p>
+                        <ul>
+                            <li>เขียนระบบจัดการข้อมูลผู้เล่นแบบ Real-time เชื่อมต่อกับ Database</li>
+                            <li>สร้างระบบ <strong>Virtual Item</strong> และระบบเศรษฐกิจภายในเกม</li>
+                            <li>พัฒนาปลั๊กอินเชื่อมต่อแชทในเกมเข้ากับ Discord (DiSky)</li>
+                            <li>เขียนโปรแกรมแปลง Resource Pack จาก Java Edition เป็น Bedrock Edition</li>
                         </ul>
                     </div>
+                </div>
 
-                    <div class="timeline-item">
-                        <div class="time-badge">2019 - 2024</div>
-                        <h3 class="institution">โรงเรียนน้ำโสมพิทยาคม</h3>
-                        <p class="degree">มัธยมศึกษาตอนต้น - ตอนปลาย</p>
+                <div class="project-card-large">
+                    <div class="project-icon rb">
+                        <i class="fas fa-gamepad"></i>
                     </div>
-                </section>
-
-                <section class="section">
-                    <h2 class="section-title">02 // TECHNICAL STACK</h2>
-                    
-                    <div class="skill-group">
-                        <h3>Languages & Scripting</h3>
-                        <div class="tag-container">
-                            <span class="tag">Java</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">Skript (Minecraft)</span>
-                            <span class="tag">Lua (Roblox)</span>
-                        </div>
+                    <div class="project-details">
+                        <h3>Roblox Game: Dentist Simulator</h3>
+                        <p class="tech-stack">Lua • Roblox Studio • TweenService</p>
+                        <ul>
+                            <li>พัฒนาระบบ Gameplay จำลองอาชีพหมอฟัน</li>
+                            <li>เขียนระบบ <strong>Wave System</strong> สำหรับต่อสู้กับเชื้อโรค</li>
+                            <li>สร้างระบบ Admin Dashboard สำหรับจัดการอีเวนต์ภายในเกม</li>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="skill-group">
-                        <h3>Tools & Environment</h3>
-                        <div class="tag-container">
-                            <span class="tag">VS Code</span>
-                            <span class="tag">Git/GitHub</span>
-                            <span class="tag">Blockbench (3D)</span>
-                            <span class="tag">Logisim</span>
-                        </div>
+                <div class="project-card-large">
+                    <div class="project-icon web">
+                        <i class="fab fa-react"></i>
                     </div>
-
-                    <div class="skill-group">
-                        <h3>Hardware & Systems</h3>
-                        <div class="tag-container">
-                            <span class="tag">Digital Circuits</span>
-                            <span class="tag">Local LLMs (AI)</span>
-                            <span class="tag">Server Management</span>
-                        </div>
+                    <div class="project-details">
+                        <h3>Discord Payment Manager</h3>
+                        <p class="tech-stack">React • Tailwind CSS • Firebase</p>
+                        <ul>
+                            <li>เว็บแอปพลิเคชันสำหรับจัดการระบบเติมเงินใน Discord Server</li>
+                            <li>ออกแบบหน้าจอ UI ให้ทันสมัย (Modern Dashboard)</li>
+                            <li>เชื่อมต่อระบบ Authentication และเก็บข้อมูลธุรกรรม</li>
+                        </ul>
                     </div>
-                </section>
-            </div>
+                </div>
 
-            <div class="right-col">
-                
-                <section class="section">
-                    <h2 class="section-title">03 // ACADEMIC PROJECTS</h2>
-                    
-                    <div class="project-card">
-                        <h3>Minecraft Server Architecture & Plugin Development</h3>
-                        <p class="project-desc">
-                            พัฒนาและปรับปรุงระบบเซิร์ฟเวอร์เกมด้วยภาษา Skript และ Java ออกแบบระบบจัดเก็บข้อมูลผู้เล่นแบบ Real-time และสร้างระบบไอเทมเสมือน (Virtual Item System)
-                        </p>
-                        <div class="tech-used">
-                            <span>Skript</span> <span>Server Logic</span> <span>Database</span>
-                        </div>
+                <div class="project-card-large">
+                    <div class="project-icon music">
+                        <i class="fas fa-music"></i>
                     </div>
-
-                    <div class="project-card">
-                        <h3>Roblox Game Development: Dentist System</h3>
-                        <p class="project-desc">
-                            เขียนสคริปต์เกมด้วยภาษา Lua (Roblox Studio) สร้างระบบ Gameplay จำลองอาชีพหมอฟัน มีฟีเจอร์ Wave System สำหรับต่อสู้กับแบคทีเรีย และระบบ Admin Tools จัดการอีเวนต์
-                        </p>
-                        <div class="tech-used">
-                            <span>Roblox Lua</span> <span>TweenService</span> <span>Game Logic</span>
-                        </div>
+                    <div class="project-details">
+                        <h3>Music Composition</h3>
+                        <p class="tech-stack">Sound Design • BGM</p>
+                        <ul>
+                            <li>แต่งเพลงประกอบ Roleplay Server ธีม Suspense/Epic</li>
+                            <li>ออกแบบเสียงเอฟเฟกต์ (SFX) สำหรับใช้ในเกม</li>
+                        </ul>
                     </div>
+                </div>
+            </section>
 
-                    <div class="project-card">
-                        <h3>3D Modeling & Custom Entity Animation</h3>
-                        <p class="project-desc">
-                            ออกแบบโมเดล 3D และทำ Texture ด้วยโปรแกรม Blockbench สร้าง Animation การเคลื่อนไหว (Walk/Attack Cycle) เพื่อนำไปใช้เป็น Custom Mob ในเกม
-                        </p>
-                        <div class="tech-used">
-                            <span>Blockbench</span> <span>3D Animation</span> <span>Texturing</span>
-                        </div>
-                    </div>
-                </section>
+            <section id="contact" class="content-section">
+                <h2 class="section-title">ช่องทางติดต่อ <span class="dot">.</span></h2>
+                <div class="contact-grid-wrapper">
+                    <a href="https://web.facebook.com/kaisak.namwiset?locale=th_TH" target="_blank" class="contact-box fb">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://line.me/ti/p/~kaisak950" target="_blank" class="contact-box ln">
+                        <i class="fab fa-line"></i>
+                        <span>Line ID: kaisak950</span>
+                    </a>
+                    <a href="tel:0941293975" class="contact-box ph">
+                        <i class="fas fa-phone"></i>
+                        <span>094-129-3975</span>
+                    </a>
+                    <a href="mailto:facebookpeemai@gmail.com" class="contact-box em">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email Me</span>
+                    </a>
+                    <a href="https://github.com/peemai950" target="_blank" class="contact-box gh">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@peemai951" target="_blank" class="contact-box tt">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
+                    <a href="https://www.instagram.com/peemami.950" target="_blank" class="contact-box ig">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                     <a href="https://youtube.com/@peemaitv2166?si=nlcJD8C1PehnSa8" target="_blank" class="contact-box yt">
+                        <i class="fab fa-youtube"></i>
+                        <span>YouTube</span>
+                    </a>
+                </div>
+            </section>
 
-                <section class="section">
-                    <h2 class="section-title">04 // PERSONAL INFO</h2>
-                    <ul class="personal-list">
-                        <li><strong>Date of Birth:</strong> 27 December 2006</li>
-                        <li><strong>Age:</strong> 19 Years old</li>
-                        <li><strong>Origin:</strong> Udon Thani, Thailand</li>
-                    </ul>
-                </section>
-
-            </div>
-        </div>
-        
-        <footer class="cv-footer">
-            <p>Generated by CS Portfolio System :: Last updated 2026</p>
-        </footer>
-
+        </main>
     </div>
+
+    <script>
+        // 1. Matrix Rain Effect
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = "01010101CS_JAVA_PYTHON_LUA_CODE_SYSTEM_SERVER";
+        const splitLetters = letters.split("");
+
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(10, 10, 12, 0.05)"; // ทำให้เกิดเงาจางๆ
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#0f0"; // สีเขียว Matrix
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = splitLetters[Math.floor(Math.random() * splitLetters.length)];
+                
+                // สุ่มสีให้มีความหลากหลายนิดหน่อย (เขียวอ่อน/ขาว)
+                if(Math.random() > 0.95) ctx.fillStyle = "#fff";
+                else ctx.fillStyle = "#00ff41";
+
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 33);
+
+        // ปรับขนาด Canvas เมื่อย่อขยายหน้าจอ
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // 2. Typing Effect (ภาษาไทย)
+        const textElement = document.getElementById('typing-text');
+        const phrases = ["นักศึกษาวิทยาการคอมพิวเตอร์", "นักพัฒนา Minecraft Server", "ผู้สนใจด้าน AI & Logic"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // หยุดรอ 2 วินาทีก่อนลบ
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        document.addEventListener('DOMContentLoaded', type);
+    </script>
 
 </body>
 </html>

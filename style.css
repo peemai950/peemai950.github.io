@@ -1,301 +1,325 @@
 :root {
-    /* --- ธีม Midnight Lab (Dark Mode) --- */
-    --bg-color: #0f172a;        /* พื้นหลังหลัก: น้ำเงินเข้มมาก */
-    --paper-bg: #1e293b;        /* สีพื้นการ์ด: น้ำเงินเทา */
-    --text-primary: #f1f5f9;    /* สีตัวหนังสือหลัก: ขาวหม่น */
-    --text-secondary: #94a3b8;  /* สีตัวหนังสือรอง: เทาฟ้า */
-    --accent-color: #38bdf8;    /* สีเน้น: ฟ้าสดใส (Sky Blue) */
-    --border-line: #334155;     /* สีเส้นขอบ */
-    --code-bg: #020617;         /* พื้นหลังส่วนที่เป็น Code */
+    --bg-dark: #0a0a0c;
+    --sidebar-bg: rgba(15, 15, 20, 0.95);
+    --content-bg: rgba(20, 20, 25, 0.7);
+    --accent-color: #00ff88; /* สีเขียว Cyber */
+    --accent-secondary: #00ccff; /* สีฟ้า Cyber */
+    --text-primary: #ffffff;
+    --text-muted: #a0a0a0;
+    --border-glass: 1px solid rgba(255, 255, 255, 0.1);
     
-    --font-main: 'Inter', 'Sarabun', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-thai: 'IBM Plex Sans Thai', sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg-color);
+    background-color: var(--bg-dark);
     color: var(--text-primary);
-    font-family: var(--font-main);
-    line-height: 1.6;
+    font-family: var(--font-thai);
+    overflow-x: hidden;
+}
+
+/* Matrix Background */
+#matrixCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    opacity: 0.15; /* ปรับความจางของ Matrix ไม่ให้กวนสายตา */
+}
+
+/* --- Layout Grid --- */
+.main-container {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* ซ้าย 300px, ขวาเต็มที่เหลือ */
+    min-height: 100vh;
+}
+
+/* --- Sidebar (Left) --- */
+.sidebar {
+    background: var(--sidebar-bg);
+    border-right: var(--border-glass);
     padding: 40px 20px;
-    /* เพิ่มลายเส้นตารางจางๆ ให้ดูเป็น Tech */
-    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 30px 30px;
-}
-
-/* Container เหมือนแผ่นงานบนโต๊ะแล็บ */
-.page-container {
-    max-width: 960px;
-    margin: 0 auto;
-    background: var(--paper-bg);
-    padding: 50px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    border: 1px solid var(--border-line);
-    border-radius: 12px;
-}
-
-/* --- Header --- */
-.cv-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 30px;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+    z-index: 100;
 }
 
-.name {
-    font-size: 2.5rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-    color: var(--text-primary);
-    line-height: 1.1;
-    margin-bottom: 5px;
-    text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-}
-
-/* Tag อาชีพแบบ Code Style */
-.role-tag {
-    font-family: var(--font-mono);
-    color: var(--accent-color);
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-    background: rgba(56, 189, 248, 0.1);
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 6px;
-    border: 1px solid rgba(56, 189, 248, 0.2);
-}
-
-/* Grid ข้อมูลติดต่อ */
-.contact-grid {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 8px 20px;
-    font-size: 0.95rem;
-}
-
-.contact-item {
-    display: contents;
-}
-
-.label {
-    font-family: var(--font-mono);
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-.value {
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-/* รูปโปรไฟล์ */
-.photo-frame {
-    width: 150px;
-    height: 150px;
-    border: 2px solid var(--accent-color);
-    padding: 4px;
-    border-radius: 12px;
-    background: var(--bg-color);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
-}
-
-.profile-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.divider {
-    border: none;
-    border-bottom: 1px dashed var(--border-line);
-    margin: 30px 0;
-}
-
-/* --- Layout 2 Columns --- */
-.main-content {
-    display: grid;
-    grid-template-columns: 1.2fr 1.5fr;
-    gap: 50px;
-}
-
-/* --- Section Styling --- */
-.section {
+.profile-section {
+    text-align: center;
     margin-bottom: 40px;
 }
 
-.section-title {
-    font-family: var(--font-mono);
-    font-size: 1rem;
+.profile-img-box {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+}
+
+.profile-img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.status-badge {
+    position: absolute;
+    bottom: 5px; right: 5px;
+    background: #1a1a1a;
     color: var(--accent-color);
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    border-bottom: 1px solid var(--border-line);
-    display: inline-block;
-    padding-bottom: 5px;
-}
-
-/* Education Items */
-.timeline-item {
-    margin-bottom: 25px;
-    border-left: 2px solid var(--border-line);
-    padding-left: 15px;
-}
-
-.time-badge {
-    font-family: var(--font-mono);
+    padding: 5px 12px;
+    border-radius: 20px;
     font-size: 0.8rem;
-    color: var(--text-primary);
-    background: var(--border-line);
-    padding: 2px 8px;
-    border-radius: 4px;
-    display: inline-block;
+    border: 1px solid var(--accent-color);
+    display: flex; align-items: center; gap: 5px;
+}
+.status-badge i { font-size: 0.6rem; animation: blink 1.5s infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+.name {
+    font-size: 1.4rem;
+    font-weight: 600;
     margin-bottom: 5px;
+    line-height: 1.2;
 }
 
-.institution {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-primary);
+.student-id {
+    font-family: var(--font-code);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
 }
 
-.degree {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
+.role-typing {
+    font-family: var(--font-code);
+    color: var(--accent-secondary);
+    font-size: 0.9rem;
+    height: 20px;
 }
+.cursor { animation: blink 1s infinite; }
 
-.coursework {
-    margin-top: 8px;
-    padding-left: 15px;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-}
-
-/* Tags (Skills) */
-.skill-group {
-    margin-bottom: 20px;
-}
-.skill-group h3 {
-    font-size: 0.95rem;
-    margin-bottom: 8px;
-    color: var(--text-primary);
-}
-.tag-container {
+/* Navigation */
+.nav-menu {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: all 0.3s;
+    display: flex; align-items: center; gap: 15px;
+    font-size: 1rem;
+}
+
+.nav-link:hover, .nav-link.active {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.sidebar-footer {
+    text-align: center;
+    color: #555;
+    font-size: 0.8rem;
+    font-family: var(--font-code);
+}
+
+/* --- Content Area (Right) --- */
+.content-area {
+    padding: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.content-section {
+    margin-bottom: 80px;
+    scroll-margin-top: 50px; /* เว้นระยะตอนเลื่อนมาเจอ */
+}
+
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+.dot { color: var(--accent-color); }
+
+/* Glass Card Style */
+.glass-card {
+    background: var(--content-bg);
+    backdrop-filter: blur(16px);
+    border: var(--border-glass);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+/* About Section */
+.highlight-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #fff;
+}
+.highlight-text strong { color: var(--accent-secondary); }
+.details-text {
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+.info-item { color: var(--text-muted); font-size: 0.95rem; }
+.label { color: var(--accent-color); font-weight: 600; margin-right: 5px; }
+
+/* Skills Section */
+.skills-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.skill-box h3 {
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    display: flex; align-items: center; gap: 10px;
+}
+.skill-tags {
+    display: flex; flex-wrap: wrap; gap: 10px;
 }
 .tag {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    background: var(--code-bg);
-    color: var(--accent-color);
-    padding: 5px 10px;
-    border-radius: 4px;
-    border: 1px solid var(--border-line);
-    transition: all 0.2s;
+    background: rgba(255,255,255,0.05);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    transition: 0.3s;
+    display: flex; align-items: center; gap: 8px;
 }
-
 .tag:hover {
     border-color: var(--accent-color);
+    background: rgba(0, 255, 136, 0.1);
     transform: translateY(-2px);
 }
+.tag.java i { color: #f89820; }
+.tag.python i { color: #3776ab; }
+.tag.html i { color: #e34f26; }
 
-/* Projects Card */
-.project-card {
-    background: #162032;
-    border: 1px solid var(--border-line);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    transition: transform 0.2s, border-color 0.2s;
-}
-
-.project-card:hover {
-    border-color: var(--accent-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-}
-
-.project-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-    color: var(--text-primary);
-}
-
-/* แก้ไขจุดที่ทำให้ตัวหนังสือห่างเกินไปเรียบร้อยแล้ว */
-.project-desc {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 15px;
-    text-align: left; /* บังคับชิดซ้าย ไม่ฉีกคำ */
-    line-height: 1.6;
-}
-
-.tech-used {
+/* Project Cards (Large) */
+.project-card-large {
     display: flex;
-    gap: 10px;
+    background: var(--content-bg);
+    border: var(--border-glass);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: 0.3s;
 }
-
-.tech-used span {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    opacity: 0.8;
+.project-card-large:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
 }
+.project-icon {
+    width: 100px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+.mc { background: linear-gradient(135deg, #10b981, #059669); }
+.rb { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+.web { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+.music { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
 
-/* Personal Info List */
-.personal-list {
+.project-details { padding: 25px; }
+.project-details h3 { font-size: 1.3rem; margin-bottom: 5px; }
+.tech-stack {
+    font-family: var(--font-code);
+    color: var(--accent-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+.project-details ul {
     list-style: none;
+    color: var(--text-muted);
 }
-.personal-list li {
-    font-size: 0.95rem;
+.project-details ul li {
     margin-bottom: 8px;
-    border-bottom: 1px solid var(--border-line);
-    padding-bottom: 8px;
-    color: var(--text-secondary);
+    position: relative;
+    padding-left: 20px;
 }
-.personal-list strong {
-    color: var(--text-primary);
-}
-
-/* Footer */
-.cv-footer {
-    text-align: center;
-    margin-top: 50px;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--border-line);
+.project-details ul li::before {
+    content: "▹";
+    position: absolute; left: 0; color: var(--accent-color);
 }
 
-/* Responsive มือถือ */
-@media (max-width: 768px) {
-    .page-container {
-        padding: 20px;
-    }
-    .cv-header {
-        flex-direction: column-reverse;
-        text-align: center;
-        align-items: center;
-    }
-    .header-left { width: 100%; }
-    .contact-grid {
-        justify-content: center;
-    }
-    .main-content {
+/* Contact Grid */
+.contact-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
+.contact-box {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--text-muted);
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+.contact-box i { font-size: 2rem; margin-bottom: 10px; color: #fff; transition: 0.3s; }
+.contact-box:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--accent-color);
+    color: #fff;
+    transform: translateY(-5px);
+}
+.contact-box.fb:hover i { color: #1877f2; }
+.contact-box.ln:hover i { color: #06c755; }
+.contact-box.yt:hover i { color: #ff0000; }
+.contact-box.gh:hover i { color: #fff; }
+
+/* Responsive Mobile */
+@media (max-width: 900px) {
+    .main-container {
         grid-template-columns: 1fr;
-        gap: 30px;
     }
-    .photo-frame {
-        margin-bottom: 20px;
+    .sidebar {
+        height: auto;
+        position: relative;
+        padding: 30px;
     }
+    .content-area {
+        padding: 30px 20px;
+    }
+    .skills-wrapper { grid-template-columns: 1fr; }
+    .project-card-large { flex-direction: column; }
+    .project-icon { width: 100%; height: 80px; }
+    .nav-menu { flex-direction: row; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
 }
